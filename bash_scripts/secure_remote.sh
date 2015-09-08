@@ -30,4 +30,6 @@ if [[ $OS == "Ubuntu" ]]; then
     sudo service fail2ban restart; #needed after changing the config file 
 fi
 
+set +e 
+
 echo "Finished.";
