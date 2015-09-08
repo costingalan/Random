@@ -8,7 +8,7 @@ echo "You have $OS";
 echo "Configuring your system...";
 
 if [[ $OS == "CentOS" ]]; then
-	sudo yum install epel-release -y;
+	sudo yum install epel-release -y; #fail2ban is avaible in epel-release
 	sudo yum install fail2ban -y;
 
 	sed -i s/"maxretry = 5"/"maxretry = 8"/ /etc/fail2ban/jail.conf
