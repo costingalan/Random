@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 echo "Checking which operating system you have: ";
 [[ -f /etc/redhat-release ]] && OS=CentOS #checking the OS 
 [[ -f /etc/lsb_release ]] && OS=Ubuntu    
