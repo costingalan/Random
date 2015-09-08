@@ -1,7 +1,11 @@
 #!/bin/bash
 
+echo "Checking which operating system you have: ";
 [[ -f /etc/redhat-release ]] && OS=CentOS #checking the OS 
-[[ -f /etc/lsb_release ]] && OS=Ubuntu    #
+[[ -f /etc/lsb_release ]] && OS=Ubuntu    
+
+echo "You have $OS";
+echo "Configuring your system...";
 
 if [[ $OS == "CentOS" ]]; then
 	sudo yum install epel-release -y;
@@ -23,3 +27,5 @@ if [[ $OS == "Ubuntu" ]]; then
     sudo service ssh reload; #needed after changing the config file
     sudo service fail2ban restart; #needed after changing the config file 
 fi
+
+echo "Finished.";
