@@ -24,6 +24,7 @@ if [[ $OS == "CentOS" ]]; then
   
   sudo systemctl reload sshd;
   sudo systemctl restart fail2ban; #needed after changing the config file
+  sudo systemctl enable fail2ban; 
 fi
 
 if [[ $OS == "Ubuntu" ]]; then
