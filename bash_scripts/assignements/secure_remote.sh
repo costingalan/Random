@@ -9,6 +9,7 @@ set -e
 echo "Checking which operating system you have: ";
 [[ -f /etc/redhat-release ]] && OS=CentOS 
 [[ -f /etc/lsb_release ]] && OS=Ubuntu    
+[[ -f /etc/lsb-release ]] && OS=Ubuntu    
 
 echo "You have $OS";
 echo "Configuring your system...";
@@ -28,7 +29,8 @@ if [[ $OS == "CentOS" ]]; then
 fi
 
 if [[ $OS == "Ubuntu" ]]; then
-	
+	sudo apt-get update;
+  sudo apt-get install openssh-server openssh-client -y;
   sudo apt-get install fail2ban -y;
 
 	sed -i s/"maxretry = 5"/"maxretry = 8"/ /etc/fail2ban/jail.conf
