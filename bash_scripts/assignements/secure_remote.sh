@@ -4,11 +4,10 @@
 #License: Apache v2.0
 #Description: Increase the security with disabling remote root login and installing fail2ban
 
-set -e
+set -xe
 
 echo "Checking which operating system you have: ";
 [[ -f /etc/redhat-release ]] && OS=CentOS 
-[[ -f /etc/lsb_release ]] && OS=Ubuntu    
 [[ -f /etc/lsb-release ]] && OS=Ubuntu    
 
 echo "You have $OS";
@@ -42,6 +41,6 @@ if [[ $OS == "Ubuntu" ]]; then
   sudo service fail2ban restart; #needed after changing the config file 
 fi
 
-set +e 
+set +xe 
 
 echo "Finished.";
