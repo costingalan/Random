@@ -18,6 +18,10 @@ function get_statistics {
   [[ -e "$LOGS_FILE" ]] && rm $LOGS_FILE || echo "You don't have the file"
   echo "Getting the statistics file"
   rsync -avzq root@10.21.7.23:/home/jenkins-slave/nova-statistics.log .
+  if [[ "$?" != "0" ]]; then
+    echo "There are problem when trying to get the statistics log"
+    exit 1
+  fi
 }
 
 
@@ -27,6 +31,11 @@ function generate_file {                      #we need a temporary file
   echo "Generating the temporary file"        #where we put the logs 
   touch temp.log                              #from the date that we need 
   grep "$1" $LOGS_FILE >> temp.log
+  if [[ "$?" -eq "1" ]]; then
+    echo "The date entered is not present in the logs file"
+    clean_up
+    exit 1;
+  fi
 
 }
 
@@ -60,6 +69,6 @@ get_statistics && generate_file "$1" && calc_succ_init && calc_succ_runs \
   && calc_fail_init && calc_fail_runs && clean_up         #better than set -e
 
 (( "$?" == "0" )) && echo "The script was succesfull" \
-  || echo "There were errors when running the script"
+  || echo "There were errors when running the script. Try adding 'set -xe'"
 
 
