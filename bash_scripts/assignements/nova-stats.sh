@@ -17,6 +17,10 @@ LOGS_FILE=nova-statistics.log
 function send_mail {
   echo "Sending mail"
   mail -s "Nova stats -$(date +%x)" "cgalan@cloudbasesolutions.com" < mail.txt 
+  mail -s "Nova stats -$(date +%x)" "vlaza@cloudbasesolutions.com" < mail.txt 
+  mail -s "Nova stats -$(date +%x)" "ociuhandu@cloudbasesolutions.com" < mail.txt 
+  mail -s "Nova stats -$(date +%x)" "abacoscloudbasesolutions.com" < mail.txt 
+  mail -s "Nova stats -$(date +%x)" "rbuzatu@cloudbasesolutions.com" < mail.txt 
 }
 
 function get_statistics {
