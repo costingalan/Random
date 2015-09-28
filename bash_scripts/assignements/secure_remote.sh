@@ -4,8 +4,6 @@
 #License: Apache v2.0
 #Description: Increase the security with disabling remote root login and installing fail2ban
 
-set -xe
-
 echo "Checking which operating system you have: ";
 [[ -f /etc/redhat-release ]] && OS=CentOS 
 [[ -f /etc/lsb-release ]] && OS=Ubuntu    
@@ -21,10 +19,14 @@ if [[ $OS == "CentOS" ]]; then
 	sed -i s/"maxretry = 5"/"maxretry = 8"/ /etc/fail2ban/jail.conf
 	sed -i s/"#PermitRootLogin"/"PermitRootlogin"/g /etc/ssh/sshd_config
 	sed -i s/"PermitRootLogin yes"/"PermitRootlogin no"/g /etc/ssh/sshd_config
+  echo "PermitRootLogin no" >> /etc/centrifydc/ssh/sshd_config
   
   sudo systemctl reload sshd;
   sudo systemctl restart fail2ban; #needed after changing the config file
-  sudo systemctl enable fail2ban; 
+  sudo systemctl enable fail2ban;
+  sudo adreload
+  sudo adflush
+  kill -9 "$(pgrep -f "/usr/share/centrifydc/sbin/sshd -D")" 
 fi
 
 if [[ $OS == "Ubuntu" ]]; then
@@ -36,11 +38,13 @@ if [[ $OS == "Ubuntu" ]]; then
 	sed -i s/"#PermitRootLogin"/"PermitRootlogin"/g /etc/ssh/sshd_config
 	sed -i s/"PermitRootLogin yes"/"PermitRootLogin no"/g /etc/ssh/sshd_config
 	sed -i s/"PermitRootLogin without-password"/"PermitRootLogin no"/g /etc/ssh/sshd_config
+  echo "PermitRootLogin no" >> /etc/centrifydc/ssh/sshd_config
   
-  sudo service ssh reload; 
-  sudo service fail2ban restart; #needed after changing the config file 
+  sudo service fail2ban restart;
+  sudo service ssh reload
+  sudo adreload
+  sudo adflush
+  kill -9 "$(pgrep -f "/usr/share/centrifydc/sbin/sshd -D")"
 fi
-
-set +xe 
 
 echo "Finished.";
