@@ -16,7 +16,7 @@ LOGS_FILE=/home/jenkins-slave/nova-statistics.log
 
 function send_mail {
   echo "Sending mail"
-  mail -s "Nova stats - $1" "cgalan@cloudbasesolutions.com,ociuhandu@cloudbasesolutions.com,vlaza@cloudbasesolutions.com,abacos@cloudbasesolutions.com,nherciu@cloudbasesolutions.com,rbuzatu@cloudbasesolutions.com" < mail.txt
+  mail -s "Nova stats - $1" "cgalan@cloudbasesolutions.com" < mail.txt
 }
 
 function generate_file {                      #we need a temporary file 
