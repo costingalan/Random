@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Author: cgalan@cloudbasesolutions.com
-# Version: 1.0
+# Version: 2.0
 # License: Apache V2.0
 # Description: Create statistics for nova for a specific date. 
 
@@ -16,26 +16,8 @@ LOGS_FILE=/home/jenkins-slave/nova-statistics.log
 
 function send_mail {
   echo "Sending mail"
-  mail -s "Nova stats - $(date +%x)" "cgalan@cloudbasesolutions.com" < mail.txt 
-  #mail -s "Nova stats -$(date +%x)" "vlaza@cloudbasesolutions.com" < mail.txt 
-  #mail -s "Nova stats -$(date +%x)" "ociuhandu@cloudbasesolutions.com" < mail.txt 
-  #mail -s "Nova stats -$(date +%x)" "abacoscloudbasesolutions.com" < mail.txt 
-  #mail -s "Nova stats -$(date +%x)" "rbuzatu@cloudbasesolutions.com" < mail.txt 
+  mail -s "Nova stats - $1" "cgalan@cloudbasesolutions.com,ociuhandu@cloudbasesolutions.com,vlaza@cloudbasesolutions.com,abacos@cloudbasesolutions.com,nherciu@cloudbasesolutions.com,rbuzatu@cloudbasesolutions.com" < mail.txt
 }
-
-# Uncomment get_statistics function if you want to use this script remote.
-#
-
-#function get_statistics {
-#  [[ -e "$LOGS_FILE" ]] && rm $LOGS_FILE || echo "You don't have the file"
-#  echo "Getting the statistics file"
-#  rsync -avzq root@10.21.7.23:/home/jenkins-slave/nova-statistics.log .
-#  if [[ "$?" != "0" ]]; then
-#    echo "There are problem when trying to get the statistics log"
-#    exit 1
-#  fi
-#}
-
 
 function generate_file {                      #we need a temporary file 
   echo "Generating the temporary file"        #where we put the logs 
@@ -63,6 +45,7 @@ function calc_succ_init {
   echo Sucess inits '(%)': $(awk "BEGIN {printf $succ_init/$total_inits*100}")
   echo "Success inits: $succ_init" >> mail.txt
   echo Sucess inits '(%)': $(awk "BEGIN {printf $succ_init/$total_inits*100}") >> mail.txt
+  echo >> mail.txt
 }
 
 function calc_succ_runs {
@@ -72,6 +55,7 @@ function calc_succ_runs {
   echo Sucess runs '(%)': $(awk "BEGIN {printf $succ_runs/$total_runs*100}")
   echo "Success runs: $succ_runs" >> mail.txt
   echo Sucess runs '(%)': $(awk "BEGIN {printf $succ_runs/$total_runs*100}") >> mail.txt
+  echo >> mail.txt
 }
 
 function calc_fail_init {
@@ -81,6 +65,12 @@ function calc_fail_init {
   echo Failed inits '(%)': $(awk "BEGIN {printf $fail_init/$total_inits*100}")
   echo "Failed inits: $fail_init" >> mail.txt
   echo Failed inits '(%)': $(awk "BEGIN {printf $fail_init/$total_inits*100}") >> mail.txt
+  [[ $fail_init -eq 0 ]] || echo "LOGS for failed init:" >> mail.txt
+  for i in $(grep "init" temp.log | grep -v 'init;0' | cut -d';' -f4,5);
+  do 
+    echo "http://64.119.130.115/nova/${i/;//}" >> mail.txt;
+  done
+  echo >> mail.txt
 }
 
 function calc_fail_runs {
@@ -90,13 +80,16 @@ function calc_fail_runs {
   echo Failed runs '(%)': $(awk "BEGIN {printf $fail_runs/$total_runs*100}")
   echo "Failed runs: $fail_runs" >> mail.txt
   echo Failed runs '(%)': $(awk "BEGIN {printf $fail_runs/$total_runs*100}") >> mail.txt
+  [[ $fail_init -eq 0 ]] || echo "LOGS for failed runs:" >> mail.txt
+  for i in $(grep "run" temp.log | grep -v 'run;0' | cut -d';' -f4,5);
+  do 
+    echo "http://64.119.130.115/nova/${i/;//}" >> mail.txt;
+  done
+  echo >> mail.txt
 }
 
 
 generate_file "$1" && calc_succ_init && calc_succ_runs \
-  && calc_fail_init && calc_fail_runs && send_mail && clean_up #replace set -e
-
-(( "$?" == "0" )) && echo "The script was succesfull" \
-  || echo "There were errors when running the script. Try adding 'set -xe'"
-
+  && calc_fail_init && calc_fail_runs && send_mail $1
+clean_up #replace set -e
 
