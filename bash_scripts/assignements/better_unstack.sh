@@ -1,0 +1,16 @@
+#!/bin/bash
+
+killall --ignore-case -9 "/usr/bin/python"   
+killall --ignore-case -9 "python" 
+killall --ignore-case -9 "SCREEN"
+killall --ignore-case -9 "nova" 
+killall --ignore-case -9 "cinder"
+killall --ignore-case -9 "neutron"
+killall --ignore-case -9 "glance"
+killall --ignore-case -9 "quantum"
+killall --ignore-case -9 "rabbitmq"
+killall --ignore-case -9 "dstat"
+killall --ignore-case -9 "keystone"
+killall --ignore-case -9 "ovsdb-server"
+killall --ignore-case -9 "ovs-vswitchd"
+killall --ignore-case -9 "apache2"
