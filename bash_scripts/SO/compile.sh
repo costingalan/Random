@@ -17,61 +17,66 @@
 # executabilul);
 #   e) iesire din script.
 
+if [[ $# -lt 1 ]]; then
+	echo "Incorrect program usage. Try $0 filename.c"
+	exit 1
+fi
+
 opt=3
 
 while [ $opt -ne 5 ]
 do
 
-echo Menu:
-echo -e '\t' 1-Edit "$1"
-echo -e '\t' 2-Compile  "$1"
-echo -e '\t' 3-Display errors 
-echo -e '\t' 4-Run program
-echo -e '\t' 5-Exit script
+	echo Menu:
+	echo -e '\t' 1-Edit "$1"
+	echo -e '\t' 2-Compile  "$1"
+	echo -e '\t' 3-Display errors 
+	echo -e '\t' 4-Run program
+	echo -e '\t' 5-Exit script
 
-read -p 'Option: ' opt
+	read -p 'Option: ' opt
 
-case $opt in 
-1) 
-	echo "Editing $1"
-  vi "$1"
-  chmod +x "$1"
-	;; 
+	case $opt in 
+		1) 
+echo "Editing $1"
+vim "$1"
+chmod +x "$1"
+;; 
 2)
-	echo "Compiling $1"
-  file_name="${1//.*/.c}"
-  cp "$1" "$file_name"
-  if gcc "$file_name" -o "$file_name.out"; then
-	  echo "$file_name" "has been compiled with no errrors"
-	else
-	  gcc 2> fisier.err
-	  echo "Compilation failed - check fisier.err for details"
-	fi
-	;;
+echo "Compiling $1"
+file_name="${1//.*/.c}"
+cp "$1" "$file_name"
+if gcc "$file_name" -o "$file_name.out"; then
+	echo "$file_name" "has been compiled with no errrors"
+else
+	gcc 2> fisier.err
+	echo "Compilation failed - check fisier.err for details"
+fi
+;;
 3)
- 	if [[ ! -f fisier.err ]]; then
-    echo "There is no fisier.err. Have you tries compiling it?"
-  else
-    echo 'Error log: '
-    vi fisier.err
-  fi
-	;; 
+if [[ ! -f fisier.err ]]; then
+	echo "There is no fisier.err. Have you tried compiling it?"
+else
+	echo 'Error log: '
+	vim fisier.err
+fi
+;; 
 4)
-  file_name="${1//.*/.c}"
-  cp "$1" "$file_name"
-  if gcc "$file_name" -o "$file_name.out"; then
+file_name="${1//.*/.c}"
+cp "$1" "$file_name"
+if gcc "$file_name" -o "$file_name.out"; then
 	if find -name "$file_name.out"; then
-	./"$file_name.out" 
+		./"$file_name.out" 
 	else
-	echo "$file_name" "not found"
+		echo "$file_name" "not found"
 	fi
 fi
-	;;
+;;
 5)
-	echo Exit Script
-	;; 
+echo Exit Script
+;; 
 *)
-	echo Invalid option
- 	;;
+echo Invalid option
+;;
 esac 
 done
