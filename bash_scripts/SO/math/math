@@ -1,0 +1,37 @@
+#!/bin/bash
+
+# Functions for the array math functions.
+
+add () 
+{
+ num="$(($1 + $2))"
+ echo "$num"
+ 
+}
+
+multiply () {
+ num="$(($1 * $2))"
+ echo "$num"
+}
+
+subtract () {
+ num="$(($1 / $2))"
+ echo "$num"
+}
+
+divide () {
+ num="$(($1 / $2))"
+ echo "$num"
+}
+
+modulo () {
+ num="$(($1 % $2))"
+ echo "$num"
+}
+
+
+
+
+
+
+
