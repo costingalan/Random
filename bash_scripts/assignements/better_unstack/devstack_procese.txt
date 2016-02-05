@@ -1,0 +1,132 @@
+rabbitmq   2739  1.0  1.7 2596372 140448 ?      Sl   Sep28 145:46 /usr/lib/erlang/erts-6.1/bin/beam.smp -W w -K true -A30 -P 1048576 -- -root /usr/lib/erlang -progname erl -- -home /var/lib/rabbitmq -- -pa /usr/lib/rabbitmq/lib/rabbitmq_server-3.3.5/sbin/../ebin -noshell -noinput -s rabbit boot -sname rabbit@devstack -boot start_sasl -kernel inet_default_connect_options [{nodelay,true}] -sasl errlog_type error -sasl sasl_error_logger false -rabbit error_logger {file,"/var/log/rabbitmq/rabbit@devstack.log"} -rabbit sasl_error_logger {file,"/var/log/rabbitmq/rabbit@devstack-sasl.log"} -rabbit enabled_plugins_file "/etc/rabbitmq/enabled_plugins" -rabbit plugins_dir "/usr/lib/rabbitmq/lib/rabbitmq_server-3.3.5/sbin/../plugins" -rabbit plugins_expand_dir "/var/lib/rabbitmq/mnesia/rabbit@devstack-plugins-expand" -os_mon start_cpu_sup false -os_mon start_disksup false -os_mon start_memsup false -mnesia dir "/var/lib/rabbitmq/mnesia/rabbit@devstack" -kernel inet_dist_listen_min 25672 -kernel inet_dist_listen_max 25672
+devstack   6323  0.0  0.0  29220  4772 ?        Ss   Sep28   5:23 SCREEN -c ./stack-screenrc
+devstack   6324  0.0  0.0  21508  1584 pts/1    Ss+  Sep28   0:00 bash
+devstack   6325  0.0  0.0  21508  1660 pts/3    Ss   Sep28   0:00 bash
+devstack   6326  0.0  0.0  21508  1604 pts/5    Ss   Sep28   0:00 bash
+devstack   6327  0.0  0.0  21508  1660 pts/6    Ss   Sep28   0:00 bash
+devstack   6331  0.0  0.0  21508  1688 pts/7    Ss   Sep28   0:00 bash
+devstack   6334  0.0  0.0  21508  1592 pts/8    Ss   Sep28   0:00 bash
+devstack   6338  0.0  0.0  21508  1684 pts/9    Ss   Sep28   0:00 bash
+devstack   6341  0.0  0.0  21508  1692 pts/10   Ss   Sep28   0:00 bash
+devstack   6345  0.0  0.0  21508  1700 pts/11   Ss   Sep28   0:00 bash
+devstack   6351  0.0  0.0  21508  1608 pts/12   Ss   Sep28   0:00 bash
+devstack   6358  0.0  0.0  21508  1636 pts/14   Ss   Sep28   0:00 bash
+devstack   6367  0.0  0.0  21508  1692 pts/15   Ss   Sep28   0:00 bash
+devstack   6377  0.0  0.0  21508  1580 pts/16   Ss   Sep28   0:00 bash
+devstack   6382  0.0  0.0  21508  1608 pts/17   Ss   Sep28   0:00 bash
+devstack   6391  0.0  0.0  21508  1680 pts/18   Ss   Sep28   0:00 bash
+devstack   6400  0.0  0.0  21508  1696 pts/19   Ss   Sep28   0:00 bash
+devstack   6406  0.0  0.0  21508  1588 pts/20   Ss   Sep28   0:00 bash
+devstack   6414  0.0  0.0  21508  1680 pts/21   Ss   Sep28   0:00 bash
+devstack   6419  0.0  0.0  21508  1604 pts/22   Ss   Sep28   0:00 bash
+devstack   6424  0.0  0.0  21508  1664 pts/23   Ss   Sep28   0:00 bash
+devstack   6431  0.0  0.0  21508  1696 pts/24   Ss   Sep28   0:00 bash
+devstack   6434  0.0  0.0  21508  1588 pts/25   Ss   Sep28   0:00 bash
+devstack   6437  0.0  0.0  21508  1580 pts/26   Ss   Sep28   0:00 bash
+devstack   6442  0.0  0.0  21508  1612 pts/27   Ss   Sep28   0:00 bash
+devstack   6447  0.0  0.0  21508  1660 pts/28   Ss   Sep28   0:00 bash
+devstack   6451  0.0  0.0  21508  1592 pts/29   Ss   Sep28   0:00 bash
+devstack   6454  0.0  0.0  21508  1692 pts/30   Ss+  Sep28   0:00 bash
+devstack   6457  0.0  0.0  21508  1604 pts/31   Ss   Sep28   0:00 bash
+devstack   6466  0.0  0.0  21508  1592 pts/32   Ss   Sep28   0:00 bash
+devstack   6471  0.0  0.0  21508  1580 pts/33   Ss   Sep28   0:00 bash
+devstack   6672  0.9  0.1 167224 11020 pts/8    S+   Sep28 132:36 /usr/bin/python /usr/local/bin/glance-api --config-file=/etc/glance/glance-api.conf
+devstack   6693  1.5  1.1 265052 96256 pts/10   S+   Sep28 213:50 python /usr/local/bin/neutron-server --config-file /etc/neutron/neutron.conf --config-file /etc/neutron/plugins/ml2/ml2_conf.ini
+devstack   6698  1.0  0.1 123452 15328 pts/15   S+   Sep28 135:27 python /usr/local/bin/neutron-metadata-agent --config-file /etc/neutron/neutron.conf --config-file=/etc/neutron/metadata_agent.ini
+devstack   6701  0.0  0.3 219476 27020 pts/9    S+   Sep28   0:04 /usr/bin/python /usr/local/bin/nova-api
+devstack   6702  0.0  0.0 158972  4888 pts/31   S+   Sep28   0:01 python /opt/stack/heat/bin/heat-api --config-file=/etc/heat/heat.conf
+devstack   6710  0.0  0.0 158460  5152 pts/33   S+   Sep28   0:03 python /opt/stack/heat/bin/heat-api-cloudwatch --config-file=/etc/heat/heat.conf
+devstack   6711  1.0  0.0 250948  5756 pts/26   S+   Sep28 141:05 /usr/bin/python /usr/local/bin/cinder-api --config-file /etc/cinder/cinder.conf
+devstack   6712  1.0  0.0 224004  8112 pts/29   S+   Sep28 143:42 /usr/bin/python /usr/local/bin/cinder-volume --config-file /etc/cinder/cinder.conf
+devstack   6713  1.0  0.4 125448 39500 pts/12   S+   Sep28 137:10 python /usr/local/bin/neutron-dhcp-agent --config-file /etc/neutron/neutron.conf --config-file=/etc/neutron/dhcp_agent.ini
+devstack   6716  1.1  0.5 220788 46612 pts/14   S+   Sep28 157:54 /usr/bin/python /usr/local/bin/neutron-vpn-agent --config-file /etc/neutron/neutron.conf --config-file=/etc/neutron/l3_agent.ini --config-file=/etc/neutron/vpn_agent.ini --config-file /etc/neutron/fwaas_driver.ini
+devstack   6719  1.2  0.5 126936 41608 pts/11   S+   Sep28 161:04 python /usr/local/bin/neutron-openvswitch-agent --config-file /etc/neutron/neutron.conf --config-file /etc/neutron/plugins/ml2/ml2_conf.ini
+devstack   6720  1.0  0.9 274884 77288 pts/20   S+   Sep28 146:13 /usr/bin/python /usr/local/bin/nova-scheduler --config-file /etc/nova/nova.conf
+devstack   6721  1.4  0.9 1816192 80392 pts/25  Sl+  Sep28 192:10 /usr/bin/python /usr/local/bin/nova-compute --config-file /etc/nova/nova.conf
+devstack   6722  0.1  0.6 228236 52232 pts/28   S+   Sep28  13:44 /usr/bin/python /usr/local/bin/cinder-backup --config-file /etc/cinder/cinder.conf
+devstack   6724  1.0  0.4 122588 35784 pts/17   S+   Sep28 138:57 python /usr/local/bin/neutron-metering-agent --config-file /etc/neutron/neutron.conf --config-file /etc/neutron/services/metering/metering_agent.ini
+devstack   6725  0.0  0.1 140836  9512 pts/7    S+   Sep28   0:01 /usr/bin/python /usr/local/bin/glance-registry --config-file=/etc/glance/glance-registry.conf
+devstack   6733  0.0  0.8 264252 70304 pts/19   S+   Sep28  11:11 /usr/bin/python /usr/local/bin/nova-cert --config-file /etc/nova/nova.conf
+devstack   6734  0.0  0.0 163108  5988 pts/21   S+   Sep28   3:42 /usr/bin/python /usr/local/bin/nova-novncproxy --config-file /etc/nova/nova.conf --web /opt/stack/noVNC
+devstack   6735  0.0  0.0 141112  5316 pts/22   S+   Sep28   0:03 /usr/bin/python /usr/local/bin/nova-xvpvncproxy --config-file /etc/nova/nova.conf
+devstack   6737  1.0  0.6 232856 55816 pts/27   S+   Sep28 140:30 /usr/bin/python /usr/local/bin/cinder-scheduler --config-file /etc/cinder/cinder.conf
+devstack   6739  0.0  0.9 266056 73900 pts/23   S+   Sep28  11:10 /usr/bin/python /usr/local/bin/nova-consoleauth --config-file /etc/nova/nova.conf
+devstack   6740  0.0  0.0 158468  7280 pts/32   S+   Sep28   0:02 python /opt/stack/heat/bin/heat-api-cfn --config-file=/etc/heat/heat.conf
+devstack   6742  0.0  0.1 168288 16028 pts/18   S+   Sep28   0:02 /usr/bin/python /usr/local/bin/nova-conductor --config-file /etc/nova/nova.conf
+devstack   6743  1.0  0.4 123532 39144 pts/16   S+   Sep28 137:35 python /usr/local/bin/neutron-lbaas-agent --config-file /etc/neutron/neutron.conf --config-file=/etc/neutron/services/loadbalancer/haproxy/lbaas_agent.ini
+devstack   6745  0.0  0.0 141112  5264 pts/24   S+   Sep28   0:03 /usr/bin/python /usr/local/bin/nova-objectstore --config-file /etc/nova/nova.conf
+devstack   6825  0.9  0.1 123732 12844 pts/15   S+   Sep28 132:48 python /usr/local/bin/neutron-metadata-agent --config-file /etc/neutron/neutron.conf --config-file=/etc/neutron/metadata_agent.ini
+devstack   6826  0.9  0.2 123720 17268 pts/15   S+   Sep28 133:04 python /usr/local/bin/neutron-metadata-agent --config-file /etc/neutron/neutron.conf --config-file=/etc/neutron/metadata_agent.ini
+devstack   6827  0.9  0.2 123724 17744 pts/15   S+   Sep28 132:56 python /usr/local/bin/neutron-metadata-agent --config-file /etc/neutron/neutron.conf --config-file=/etc/neutron/metadata_agent.ini
+devstack   6829  0.9  0.2 123724 17808 pts/15   S+   Sep28 132:37 python /usr/local/bin/neutron-metadata-agent --config-file /etc/neutron/neutron.conf --config-file=/etc/neutron/metadata_agent.ini
+devstack   6847  0.0  0.1 231648 14320 pts/7    S+   Sep28   0:02 /usr/bin/python /usr/local/bin/glance-registry --config-file=/etc/glance/glance-registry.conf
+devstack   6848  0.0  0.0 158972  2984 pts/31   S+   Sep28   0:01 python /opt/stack/heat/bin/heat-api --config-file=/etc/heat/heat.conf
+devstack   6850  0.0  0.0 158972  3096 pts/31   S+   Sep28   0:01 python /opt/stack/heat/bin/heat-api --config-file=/etc/heat/heat.conf
+devstack   6854  0.0  0.3 231392 30048 pts/7    S+   Sep28   0:02 /usr/bin/python /usr/local/bin/glance-registry --config-file=/etc/glance/glance-registry.conf
+devstack   6855  0.2  0.1 162716 13120 pts/31   S+   Sep28  38:14 python /opt/stack/heat/bin/heat-api --config-file=/etc/heat/heat.conf
+devstack   6857  0.0  0.0 158972  2992 pts/31   S+   Sep28   0:01 python /opt/stack/heat/bin/heat-api --config-file=/etc/heat/heat.conf
+devstack   6860  0.0  0.2 231648 16776 pts/7    S+   Sep28   0:03 /usr/bin/python /usr/local/bin/glance-registry --config-file=/etc/glance/glance-registry.conf
+devstack   6863  0.0  0.3 231392 30988 pts/7    S+   Sep28   0:02 /usr/bin/python /usr/local/bin/glance-registry --config-file=/etc/glance/glance-registry.conf
+devstack   6871  0.0  0.2 230624 20492 pts/7    S+   Sep28   0:02 /usr/bin/python /usr/local/bin/glance-registry --config-file=/etc/glance/glance-registry.conf
+devstack   6875  0.0  0.1 230880 11960 pts/7    S+   Sep28   0:02 /usr/bin/python /usr/local/bin/glance-registry --config-file=/etc/glance/glance-registry.conf
+devstack   6877  0.0  0.3 231648 29404 pts/7    S+   Sep28   0:02 /usr/bin/python /usr/local/bin/glance-registry --config-file=/etc/glance/glance-registry.conf
+devstack   6878  0.0  0.1 231392 14064 pts/7    S+   Sep28   0:02 /usr/bin/python /usr/local/bin/glance-registry --config-file=/etc/glance/glance-registry.conf
+devstack   6889  0.1  0.6 226588 50232 pts/29   S+   Sep28  14:04 /usr/bin/python /usr/local/bin/cinder-volume --config-file /etc/cinder/cinder.conf
+devstack   6892  0.2  0.2 171064 23216 pts/8    S+   Sep28  38:45 /usr/bin/python /usr/local/bin/glance-api --config-file=/etc/glance/glance-api.conf
+devstack   6895  0.6  0.2 170808 22660 pts/8    S+   Sep28  85:40 /usr/bin/python /usr/local/bin/glance-api --config-file=/etc/glance/glance-api.conf
+devstack   6896  0.9  0.2 171832 17544 pts/8    S+   Sep28 131:21 /usr/bin/python /usr/local/bin/glance-api --config-file=/etc/glance/glance-api.conf
+devstack   6901  0.2  0.2 170552 22932 pts/8    S+   Sep28  39:34 /usr/bin/python /usr/local/bin/glance-api --config-file=/etc/glance/glance-api.conf
+devstack   6913  0.0  0.0 250948  2760 pts/26   S+   Sep28   0:01 /usr/bin/python /usr/local/bin/cinder-api --config-file /etc/cinder/cinder.conf
+devstack   6914  0.0  0.0 250948  2884 pts/26   S+   Sep28   0:01 /usr/bin/python /usr/local/bin/cinder-api --config-file /etc/cinder/cinder.conf
+devstack   6915  0.0  0.0 259156  5316 pts/26   S+   Sep28   0:01 /usr/bin/python /usr/local/bin/cinder-api --config-file /etc/cinder/cinder.conf
+devstack   6917  0.0  0.0 250948  2880 pts/26   S+   Sep28   0:01 /usr/bin/python /usr/local/bin/cinder-api --config-file /etc/cinder/cinder.conf
+devstack   6945  1.0  1.0 279564 84616 pts/18   S+   Sep28 145:35 /usr/bin/python /usr/local/bin/nova-conductor --config-file /etc/nova/nova.conf
+devstack   6948  1.0  1.0 278368 82616 pts/18   S+   Sep28 145:41 /usr/bin/python /usr/local/bin/nova-conductor --config-file /etc/nova/nova.conf
+devstack   6949  1.0  1.0 279516 85060 pts/18   S+   Sep28 145:51 /usr/bin/python /usr/local/bin/nova-conductor --config-file /etc/nova/nova.conf
+devstack   6950  1.0  1.0 279364 85060 pts/18   S+   Sep28 146:26 /usr/bin/python /usr/local/bin/nova-conductor --config-file /etc/nova/nova.conf
+devstack   6951  1.0  1.0 279616 84488 pts/18   S+   Sep28 145:25 /usr/bin/python /usr/local/bin/nova-conductor --config-file /etc/nova/nova.conf
+devstack   6952  1.0  1.0 279912 83920 pts/18   S+   Sep28 145:18 /usr/bin/python /usr/local/bin/nova-conductor --config-file /etc/nova/nova.conf
+devstack   6953  1.0  1.0 278256 82884 pts/18   S+   Sep28 144:36 /usr/bin/python /usr/local/bin/nova-conductor --config-file /etc/nova/nova.conf
+devstack   6956  1.0  1.0 278980 83700 pts/18   S+   Sep28 144:44 /usr/bin/python /usr/local/bin/nova-conductor --config-file /etc/nova/nova.conf
+devstack   6960  0.0  0.1 180496 11132 pts/9    S+   Sep28   0:01 /usr/bin/python /usr/local/bin/nova-api
+devstack   6961  0.0  0.1 180496 11132 pts/9    S+   Sep28   0:01 /usr/bin/python /usr/local/bin/nova-api
+devstack   6962  0.0  0.1 180496 11132 pts/9    S+   Sep28   0:01 /usr/bin/python /usr/local/bin/nova-api
+devstack   6970  0.0  0.1 180496 11132 pts/9    S+   Sep28   0:01 /usr/bin/python /usr/local/bin/nova-api
+devstack   6983  1.0  1.5 345176 122464 pts/9   S+   Sep28 134:21 /usr/bin/python /usr/local/bin/nova-api
+devstack   6984  1.0  1.6 345024 137768 pts/9   S+   Sep28 134:53 /usr/bin/python /usr/local/bin/nova-api
+devstack   6985  1.0  1.6 345324 131212 pts/9   S+   Sep28 134:40 /usr/bin/python /usr/local/bin/nova-api
+devstack   6986  1.0  1.3 344416 112756 pts/9   S+   Sep28 134:41 /usr/bin/python /usr/local/bin/nova-api
+devstack   7006  1.0  0.8 338276 71680 pts/9    S+   Sep28 133:59 /usr/bin/python /usr/local/bin/nova-api
+devstack   7007  0.9  1.5 337540 128496 pts/9   S+   Sep28 133:39 /usr/bin/python /usr/local/bin/nova-api
+devstack   7008  0.9  1.0 336624 82872 pts/9    S+   Sep28 132:56 /usr/bin/python /usr/local/bin/nova-api
+devstack   7009  0.9  0.9 337800 73472 pts/9    S+   Sep28 132:00 /usr/bin/python /usr/local/bin/nova-api
+devstack   8621  0.0  0.0 105228  3164 ?        S    Sep28   0:01 /usr/bin/python /usr/local/bin/neutron-ns-metadata-proxy --pid_file=/opt/stack/data/neutron/external/pids/4067a2af-86f1-431a-a40b-7eb7a41f5d75.pid --metadata_proxy_socket=/opt/stack/data/neutron/metadata_proxy --router_id=4067a2af-86f1-431a-a40b-7eb7a41f5d75 --state_path=/opt/stack/data/neutron --metadata_port=9697 --metadata_proxy_user=1000 --metadata_proxy_group=1000 --debug --verbose
+devstack   8625  0.0  0.0 105228  3180 ?        S    Sep28   0:01 /usr/bin/python /usr/local/bin/neutron-ns-metadata-proxy --pid_file=/opt/stack/data/neutron/external/pids/11d8b2ed-e99e-42a9-a552-76dc005eb114.pid --metadata_proxy_socket=/opt/stack/data/neutron/metadata_proxy --router_id=11d8b2ed-e99e-42a9-a552-76dc005eb114 --state_path=/opt/stack/data/neutron --metadata_port=9697 --metadata_proxy_user=1000 --metadata_proxy_group=1000 --debug --verbose
+devstack   8627  0.0  0.0 105232  3184 ?        S    Sep28   0:01 /usr/bin/python /usr/local/bin/neutron-ns-metadata-proxy --pid_file=/opt/stack/data/neutron/external/pids/803eea13-0275-4b90-95ae-7c5d8230b333.pid --metadata_proxy_socket=/opt/stack/data/neutron/metadata_proxy --router_id=803eea13-0275-4b90-95ae-7c5d8230b333 --state_path=/opt/stack/data/neutron --metadata_port=9697 --metadata_proxy_user=1000 --metadata_proxy_group=1000 --debug --verbose
+devstack   8629  0.0  0.0 105228  3200 ?        S    Sep28   0:01 /usr/bin/python /usr/local/bin/neutron-ns-metadata-proxy --pid_file=/opt/stack/data/neutron/external/pids/7372a5fc-7b4a-45ac-90df-4def3b16c704.pid --metadata_proxy_socket=/opt/stack/data/neutron/metadata_proxy --router_id=7372a5fc-7b4a-45ac-90df-4def3b16c704 --state_path=/opt/stack/data/neutron --metadata_port=9697 --metadata_proxy_user=1000 --metadata_proxy_group=1000 --debug --verbose
+devstack   8635  0.0  0.0 105232  3260 ?        S    Sep28   0:01 /usr/bin/python /usr/local/bin/neutron-ns-metadata-proxy --pid_file=/opt/stack/data/neutron/external/pids/1c713bcd-2ba6-4d3f-a197-7cad93b0ba23.pid --metadata_proxy_socket=/opt/stack/data/neutron/metadata_proxy --router_id=1c713bcd-2ba6-4d3f-a197-7cad93b0ba23 --state_path=/opt/stack/data/neutron --metadata_port=9697 --metadata_proxy_user=1000 --metadata_proxy_group=1000 --debug --verbose
+devstack   8665  0.0  0.0 105232  3264 ?        S    Sep28   0:01 /usr/bin/python /usr/local/bin/neutron-ns-metadata-proxy --pid_file=/opt/stack/data/neutron/external/pids/465f14d6-e2bb-46b1-badb-47e289206d89.pid --metadata_proxy_socket=/opt/stack/data/neutron/metadata_proxy --router_id=465f14d6-e2bb-46b1-badb-47e289206d89 --state_path=/opt/stack/data/neutron --metadata_port=9697 --metadata_proxy_user=1000 --metadata_proxy_group=1000 --debug --verbose
+devstack   8682  0.0  0.0 105232  3256 ?        S    Sep28   0:01 /usr/bin/python /usr/local/bin/neutron-ns-metadata-proxy --pid_file=/opt/stack/data/neutron/external/pids/376cc2e7-5f35-4f92-86e2-ee38703fdbd2.pid --metadata_proxy_socket=/opt/stack/data/neutron/metadata_proxy --router_id=376cc2e7-5f35-4f92-86e2-ee38703fdbd2 --state_path=/opt/stack/data/neutron --metadata_port=9697 --metadata_proxy_user=1000 --metadata_proxy_group=1000 --debug --verbose
+devstack   8703  0.0  0.0 105232  3356 ?        S    Sep28   0:01 /usr/bin/python /usr/local/bin/neutron-ns-metadata-proxy --pid_file=/opt/stack/data/neutron/external/pids/6e287dde-1bc1-4aa9-a1e2-d9eb492a6f08.pid --metadata_proxy_socket=/opt/stack/data/neutron/metadata_proxy --router_id=6e287dde-1bc1-4aa9-a1e2-d9eb492a6f08 --state_path=/opt/stack/data/neutron --metadata_port=9697 --metadata_proxy_user=1000 --metadata_proxy_group=1000 --debug --verbose
+devstack   9237  0.0  0.0 105232  3272 ?        S    Sep28   0:01 /usr/bin/python /usr/local/bin/neutron-ns-metadata-proxy --pid_file=/opt/stack/data/neutron/external/pids/b51d1127-b721-44d7-97ec-05b96df7ac3a.pid --metadata_proxy_socket=/opt/stack/data/neutron/metadata_proxy --router_id=b51d1127-b721-44d7-97ec-05b96df7ac3a --state_path=/opt/stack/data/neutron --metadata_port=9697 --metadata_proxy_user=1000 --metadata_proxy_group=1000 --debug --verbose
+devstack   9249  0.0  0.0 105232  3336 ?        S    Sep28   0:01 /usr/bin/python /usr/local/bin/neutron-ns-metadata-proxy --pid_file=/opt/stack/data/neutron/external/pids/b31cdc24-19e4-4032-a70e-ba72652d44cf.pid --metadata_proxy_socket=/opt/stack/data/neutron/metadata_proxy --router_id=b31cdc24-19e4-4032-a70e-ba72652d44cf --state_path=/opt/stack/data/neutron --metadata_port=9697 --metadata_proxy_user=1000 --metadata_proxy_group=1000 --debug --verbose
+devstack  32815  0.0  0.2 105232 22156 ?        S    Oct05   0:00 /usr/bin/python /usr/local/bin/neutron-ns-metadata-proxy --pid_file=/opt/stack/data/neutron/external/pids/3d143341-6520-458a-9cc9-2dd8386b1a68.pid --metadata_proxy_socket=/opt/stack/data/neutron/metadata_proxy --router_id=3d143341-6520-458a-9cc9-2dd8386b1a68 --state_path=/opt/stack/data/neutron --metadata_port=9697 --metadata_proxy_user=1000 --metadata_proxy_group=1000 --debug --verbose
+devstack  44108  0.0  0.0 250764  7960 ?        Sl   Oct05   0:08 (wsgi:horizon)    -k start
+devstack  44109  0.0  0.0 250772  7940 ?        Sl   Oct05   0:08 (wsgi:horizon)    -k start
+devstack  44110  0.0  0.0 250764  8004 ?        Sl   Oct05   0:08 (wsgi:horizon)    -k start
+devstack  44111  0.0  0.0 176936  7948 ?        Sl   Oct05   0:08 (wsgi:keystone-pu -k start
+devstack  44112  0.0  0.0 176928  7952 ?        Sl   Oct05   0:08 (wsgi:keystone-pu -k start
+devstack  44113  0.0  0.0 176928  7996 ?        Sl   Oct05   0:08 (wsgi:keystone-pu -k start
+devstack  44114  0.0  0.0 176928  7996 ?        Sl   Oct05   0:08 (wsgi:keystone-pu -k start
+devstack  44115  0.0  0.0 176928  7996 ?        Sl   Oct05   0:08 (wsgi:keystone-pu -k start
+devstack  44116  0.0  0.0 176928  7956 ?        Sl   Oct05   0:09 (wsgi:keystone-ad -k start
+devstack  44117  0.0  0.0 176928  7996 ?        Sl   Oct05   0:08 (wsgi:keystone-ad -k start
+devstack  44118  0.0  0.0 176928  7996 ?        Sl   Oct05   0:08 (wsgi:keystone-ad -k start
+devstack  44119  0.0  0.0 176936  7956 ?        Sl   Oct05   0:08 (wsgi:keystone-ad -k start
+devstack  44120  0.0  0.0 176928  7996 ?        Sl   Oct05   0:08 (wsgi:keystone-ad -k start
+root      50054  0.1  0.1 273016 12736 ?        Ss   17:13   0:00 sshd: devstack [priv]
+devstack  50259  0.0  0.0 273016  5480 ?        S    17:14   0:00 sshd: devstack@pts/0
+devstack  50260  0.3  0.0  24424  7088 pts/0    Ss   17:14   0:00 -bash
+devstack  50481  0.0  0.0  15572  2168 pts/0    R+   17:14   0:00 ps -aux
+devstack  97370  0.0  0.0 105232  3220 ?        S    Oct04   0:00 /usr/bin/python /usr/local/bin/neutron-ns-metadata-proxy --pid_file=/opt/stack/data/neutron/external/pids/5153f568-5b0a-47a5-9110-2ee8d40894ad.pid --metadata_proxy_socket=/opt/stack/data/neutron/metadata_proxy --router_id=5153f568-5b0a-47a5-9110-2ee8d40894ad --state_path=/opt/stack/data/neutron --metadata_port=9697 --metadata_proxy_user=1000 --metadata_proxy_group=1000 --debug --verbose
+devstack 116199  0.0  0.0 105232  3424 ?        S    Oct05   0:00 /usr/bin/python /usr/local/bin/neutron-ns-metadata-proxy --pid_file=/opt/stack/data/neutron/external/pids/2fc3a9aa-8514-4b89-a0b8-774da64696b1.pid --metadata_proxy_socket=/opt/stack/data/neutron/metadata_proxy --router_id=2fc3a9aa-8514-4b89-a0b8-774da64696b1 --state_path=/opt/stack/data/neutron --metadata_port=9697 --metadata_proxy_user=1000 --metadata_proxy_group=1000 --debug --verbose
