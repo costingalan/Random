@@ -1,0 +1,40 @@
+Source: networking-hyperv
+Section: python
+Priority: optional
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Build-Depends: debhelper (>= 9), dh-python, python-all (>= 2.6.6-3~)
+Build-Depends-Indep:
+ python-babel (>= 1.3),
+ python-eventlet (>= 0.16.1),
+ python-fixtures (>= 0.3.14),
+ python-hacking (>= 0.10.0),
+ python-mock (>= 1.0),
+ python-oslo-config (>= 2.3.0),
+ python-oslo-i18n (>= 1.5.0),
+ python-oslo-log (>= 1.8.0),
+ python-oslo-serialization (>= 1.4.0),
+ python-oslo-utils (>= 2.0.0),
+ python-oslotest (>= 1.2.0),
+ python-pbr (>= 1.6),
+ python-setuptools,
+ python-subunit (>= 0.0.18),
+ python-testscenarios (>= 0.4),
+ python-testtools (>= 0.9.36),
+ testrepository (>= 0.0.18)
+Standards-Version: 3.9.6
+Homepage: https://github.com/openstack/networking-hyperv
+
+Package: python-networking-hyperv
+Architecture: all
+Depends: ${misc:Depends}, ${python:Depends}
+Description: OpenStack Networking Hyper-V ML2 mechanism driver
+ Neutron is a virtual network service for Openstack, and a part of
+ Netstack. Just like OpenStack Nova provides an API to dynamically
+ request and configure virtual servers, Neutron provides an API to
+ dynamically request and configure virtual networks. These networks
+ connect "interfaces" from other OpenStack services (e.g., virtual NICs
+ from Nova VMs). The Neutron API supports extensions to provide
+ advanced network capabilities (e.g., QoS, ACLs, network monitoring,
+ etc.)
+ .
+ This package provides the Hyper-V mechanism driver for Neutron.

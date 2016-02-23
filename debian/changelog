@@ -1,0 +1,23 @@
+networking-hyperv (1.0.2-0ubuntu1~ubuntu15.04.1~cloud0) trusty-liberty; urgency=medium
+
+  * New package for the stable/liberty release for trusty.
+
+ -- Costin Galan <cgalan@cloudbasesolutions.com>  Fri, 12 Feb 2016 12:33:45 +0100
+
+networking-hyperv (1.0.2-0ubuntu1~ubuntu15.04.1~cloud0) trusty-kilo; urgency=medium
+
+  * New package for the Ubuntu Cloud Archive.
+
+ -- James Page <james.page@ubuntu.com>  Wed, 15 Jul 2015 15:33:45 +0100
+
+networking-hyperv (1.0.2-0ubuntu1~ubuntu15.04.1) vivid-backports; urgency=medium
+
+  * No-change backport to vivid (LP: #1464221)
+
+ -- Micah Gersten <micahg@ubuntu.com>  Sun, 28 Jun 2015 16:09:35 -0500
+
+networking-hyperv (1.0.2-0ubuntu1) wily; urgency=medium
+
+  * Initial packaging of OpenStack Networking Hyper-V ML2 mechanism driver.
+
+ -- Gabriel-Adrian Samfira <gsamfira@cloudbasesolutions.com>  Tue, 05 May 2015 12:06:21 +0200
