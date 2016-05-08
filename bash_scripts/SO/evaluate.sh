@@ -9,6 +9,6 @@ if [[ "$#" -gt 9 ]]; then
    exit 1
 fi
 
-for i in $(seq $# -1 1); do 
-eval "echo \$$i"
+for i in $(seq $# -1 1); do
+   eval "echo \$$i"
 done

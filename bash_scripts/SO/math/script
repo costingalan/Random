@@ -38,12 +38,12 @@ menu () {
   case "$opt" in
 0)
   exit 0;
-  ;; 
+  ;;
 1)
   n="$(add "$1" "$2")"
   echo "$n"
   ;;
-2)  
+2)
   n="$(subtract "$1" "$2")"
   echo "$n"
   ;;

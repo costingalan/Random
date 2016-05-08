@@ -6,12 +6,11 @@
 
 
 if [[ $# -lt 2 ]]; then
-	echo "Not enough arguments"
-  echo "Usage: $0 file location"
-	exit 1;
+    echo "Not enough arguments"
+    echo "Usage: $0 file location"
+    exit 1;
 fi
 
-#cd $2
 echo "Searching for $1 in: $2 "
 echo "Results: "
 find "$2" -name "$1"
